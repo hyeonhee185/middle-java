@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+function proc1(){
+	
+	document.getElementById('rst1').innerHTML = 'script방식으로 기능을 수행';
+}
+
+$(document).ready(function(){
+	
+	/* jQuery (=$) */
+	jQuery('#btn1').on('click', function(){
+		jQuery('#rst2').html('HI jQuery!!');
+	});
+		
+	
+});
+
+
+
+</script>
+
+</head>
+<body>
+
+  <h3>script 방식</h3>
+  <input type="button" value="확인" onclick="proc1()">
+  <br>
+  <div id="rst1"></div>
+  
+  <h3>jQuery 방식</h3>
+  <input type="button" value="확인" id="btn1">
+  <br>
+  <div id="rst2"></div>
+
+</body>
+</html>

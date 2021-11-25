@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#btn1').on('click',function(){
+		$('p').first().css("background", 'pink');
+	})
+	$('#btn2').on('click',function(){
+		$('p').last().css("color", 'blue');
+	})
+	$('#btn3').on('click',function(){
+		$('p').filter(':even').css("font-size", '2.0em');
+	})
+	$('#btn4').on('click',function(){
+		$('p').filter(':odd').css("border", '2px solid green');
+	})
+	$('#btn5').on('click',function(){
+		$('p').filter(':contains(보슬보슬)').css("text-decoration", 'underline');
+	})
+	
+})
+</script>
+</head>
+<body>
+
+  <input type="button" id="btn1" value="first">
+  <input type="button" id="btn2" value="last">
+  <input type="button" id="btn3" value="even">
+  <input type="button" id="btn4" value="odd">
+  <input type="button" id="btn5" value="filter">
+
+  <div id="rst">
+    <p>흰눈이 보슬보슬 내려옵니다</p>
+    <p>하늘에서 새하얀 눈이 내려옵니다</p>
+    <p>산에도 들에도 들판위에도</p>
+    <p>소리없이 보슬보슬 내려옵니다</p>
+  </div>
+
+
+</body>
+</html>

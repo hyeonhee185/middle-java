@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	//서버에서 전송된 응답데이터를 셀렉터를 이용해 바로 특정 노드에 붙일 수 있다
+	$('button').on('click',function(){
+		$('div').load("load/test/loadTest.jsp", {"data1" : "apple" , "data2" : "pie"}, callback);
+	})
+})
+
+function callback(res){
+	alert(res);
+}
+
+</script>
+</head>
+<body>
+  <button>버튼</button>
+  <div></div>
+</body>
+</html>

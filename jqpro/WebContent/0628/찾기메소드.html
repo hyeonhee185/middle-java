@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+.siblings *{
+	border : 2px solid lightgray;
+	color : lightgray;
+	padding : 5px;
+	margin : 15px;
+	display : block;
+}
+.dd{
+	border : 3px dotted black;
+	margin : 5px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#btn0').on('click', function(){
+		$('#rst1 li.start').siblings().css({'color' : 'orange', 'border' : '1px dotted orange'});
+	})
+	$('#btn1').on('click', function(){
+		$('#rst1 li.start').next().css({'color' : 'red', 'border' : '1px solid red'});
+	})
+	$('#btn2').on('click', function(){
+		$('#rst1 li.start').nextAll().css({'color' : 'blue', 'border' : '1px dotted blue'});
+	})
+	$('#btn3').on('click', function(){
+		$('#rst1 li.start').nextUntil('#rst1 li.stop').css({'color' : 'green', 'border' : '1px solid green'});
+	})
+	
+	//==========================================================================================
+	
+	$('#btn4').on('click', function(){
+		$('#rst2 li.start').prev().css({'color' : 'red', 'border' : '1px solid red'});
+	})
+	$('#btn5').on('click', function(){
+		$('#rst2 li.start').prevAll().css({'color' : 'blue', 'border' : '1px dotted blue'});
+	})
+	$('#btn6').on('click', function(){
+		$('#rst2 li.start').prevUntil('#rst2 li.stop').css({'color' : 'green', 'border' : '1px solid green'});
+	})
+	
+	//==========================================================================================
+		
+	$('#btn7').on('click', function(){
+		$('#rst3 span').parent().css({'color' : 'red', 'border' : '1px solid red'});
+	})
+	$('#btn8').on('click', function(){
+		$('#rst3 span').parents().css({'color' : 'blue', 'border' : '1px dotted blue'});
+	})
+	$('#btn9').on('click', function(){
+		$('#rst3 span').parents('ul').css({'color' : 'green', 'border' : '1px solid green'});
+	})
+	$('#btn10').on('click', function(){
+		$('#rst3 span').parentsUntil('#rst3').css({'color' : 'green', 'border' : '1px solid green'});
+	})
+		
+	//==========================================================================================
+		
+	$('#btn11').on('click', function(){
+		$('#rst4').find('span').css({'color' : 'red', 'border' : '1px solid red'});
+	})
+	$('#btn12').on('click', function(){
+		$(this).parent().find('span').css({'color' : 'blue', 'border' : '1px dotted blue'});
+	})
+	$('#btn13').on('click', function(){
+		$(this).parents('#rst4').find('span').css({'color' : 'green', 'border' : '1px solid green'});
+	})
+	$('#btn14').on('click', function(){
+		$('#rst4').children().css({'color' : 'teal', 'border' : '1px solid teal'});
+	})
+		
+})
+</script>
+</head>
+<body>
+
+  <div id="rst1" class="dd">
+    <input type="button" id="btn0" value="siblings">
+    <input type="button" id="btn1" value="next">
+    <input type="button" id="btn2" value="nextAll">
+    <input type="button" id="btn3" value="nextUntil">
+
+    <div style="width:500px;" class="siblings">
+	  <ul>ul (parent)  
+	    <li>li (the previous sibling of "start")</li>
+	    <li>li (the previous sibling of "start")</li>
+	    <li class="start">li (sibling START)</li>
+	    <li>li (the next sibling of "start")</li>
+	    <li>li (the next sibling of "start")</li>
+	    <li class="stop">li (sibling STOP)</li>
+	  </ul>   
+    </div>
+  </div>
+  
+  <div id="rst2" class="dd">
+    <input type="button" id="btn4" value="pre">
+    <input type="button" id="btn5" value="prevAll">
+    <input type="button" id="btn6" value="prevUntil">
+
+    <div style="width:500px;" class="siblings">
+	  <ul>ul (parent)  
+	    <li>li (the previous sibling of "start")</li>
+	    <li>li (the previous sibling of "start")</li>
+	    <li class="stop">li (sibling STOP)</li>
+	    <li>li (the next sibling of "start")</li>
+	    <li>li (the next sibling of "start")</li>
+	    <li class="start">li (sibling START)</li>
+	  </ul>   
+    </div>
+  </div>
+
+  <div id="rst3" class="dd">
+    <input type="button" id="btn7" value="parent">
+    <input type="button" id="btn8" value="parents">
+    <input type="button" id="btn9" value="parents_sel">
+    <input type="button" id="btn10" value="parentsUntil">
+
+    <div style="width:500px;" class="siblings">div (great-grandparent)
+	  <ul>ul (grand parent)  
+	    <li>li (direct parent)
+	      <span>span</span>
+	    </li>
+	  </ul>   
+    </div>
+  </div>
+  
+  <div id="rst4" class="dd">
+    <input type="button" id="btn11" value="find">
+    <input type="button" id="btn12" value="thisfind">
+    <input type="button" id="btn14" value="children">
+
+    <div style="width:500px;" class="siblings">div (great-grandparent)
+	  <ul>ul (grand parent)  
+	    <li>li (direct parent)
+	      <span>span
+		    <input type="button" id="btn13" value="thisfind">
+	      </span>
+	    </li>
+	  </ul>   
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#box1 input:button').on('click', function(){
+		
+		//입력한 값을 불러오기
+		vid = $("#box1 :text").val();
+		vpw = $("#box1 :password").val();
+		
+		//ajax를 통해 서버로 보내기
+		$.ajax({
+			url : 'jq_Ajax.jsp',
+			type : 'post',	//method : 'post'
+	// 		data : 'id=' + vid + '&pw=' + vpw,
+			data : {'id' : vid, 'pw' : vpw },
+			success : function(res){
+				code = "";
+				if(res.sw == 'ok'){
+					code += res.name + "님 환영합니다";
+				}else{
+					code += "로그인에 실패하였습니다";
+				}
+				$('#rst1').text(code);
+			},
+			error : function(xhr){
+				alert(xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+})
+</script>
+</head>
+<body>
+
+  <div id="box1">
+    <form>
+      id<input type="text"><br>
+      pw<input type="password"><br>
+      <input type="button" value="전송">
+    </form>
+    <div id="rst1"></div>
+  </div>
+
+
+
+</body>
+</html>

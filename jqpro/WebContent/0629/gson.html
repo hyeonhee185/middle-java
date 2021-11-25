@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<pre>
+gson: json형식의 문자열을 파싱하기 위해 google에서 만든 json라이브러리 (google+json)
+
+json 파싱
+1. json은 key와 value가 중괄호{,}안에서 표현되고, 대괄호[,]는 하나의 value가 된다
+
+2. 중괄호를 object라고 하며 대괄호는 array라고 한다
+ex) String str = "[ {\"NO\" : 1, \"NAME\" : \"APPLE\", \"KOR\" : \"사과\", \"PRICE\" : \"1000\"},
+					{\"NO\" : 2, \"NAME\" : \"BANANA\", \"KOR\" : \"바나나\", \"PRICE\" : \"500\"},
+					{\"NO\" : 3, \"NAME\" : \"MELON\", \"KOR\" : \"메론\", \"PRICE\" : \"2000\"} ]"
+
+3. 파싱을 위해 JsonParser객체 생성
+ex) JsonParser jsonParser = new JsonParser();
+
+4. JsonArray선언하고 JsonParser로 문자열을 파싱
+ex)JsonArray jsonArray = (JsonArray)jsonParser.parse(str);
+
+5. loop돌며 jsonArray안의 object를 빼내어 값 추출 (jsonArray의 크기는 object의 수)
+ex) for(int i=0; i < jsonArray.size(); i++){ ... }
+</pre>
+
+</body>
+</html>

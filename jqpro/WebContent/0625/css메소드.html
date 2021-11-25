@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#btn1').on('click',function(){
+		$('p').addClass('pcolor');
+	})
+	
+	$('p').on('click',function(){
+// 		$(this).addClass('backcolor');
+// 		$(this).toggleClass('backcolor');
+
+		if($(this).hasClass('backcolor')){
+			$(this).removeClass('backcolor')
+		}else{
+			$(this).addClass('backcolor');
+		}
+	})
+	
+	$('#rst1').on('mouseover',function(){
+		$(this).addClass('backcolor');
+	})
+	
+	//mouseout 일때 removeClass
+	$('#rst1').on('mouseout',function(){
+		$(this).removeClass('backcolor');
+	})
+	
+	/* $('img').on('mouseover',function(){
+		$(this).addClass('borderblue');
+	})
+	
+	//mouseout 일때 removeClass
+	$('img').on('mouseout',function(){
+		$(this).removeClass('borderblue');
+	}) */
+	
+	$('img').hover(function(){
+		$(this).addClass('borderblue');
+	},function(){
+		$(this).removeClass('borderblue');
+	})
+	
+	
+})
+</script>
+<style>
+.pcolor{
+	color : red;
+}
+.backcolor{
+	background : orange;
+}
+.borderblue{
+	border : 2px solid blue;
+	border-radius : 50%;
+}
+div{
+	margin : 20px;
+	padding : 20px;
+}
+img{
+	width : 140px;
+	height : 140px;
+}
+</style>
+</head>
+<body>
+
+  <input type="button" id="btn1" value="확인">
+  
+  <br>
+  
+  <p>산들 바람이 불어옵니다</p>
+  <p>무궁화 꽃이 피었습니다</p>
+  <p>산들 바람이 불어옵니다</p>
+  
+  <div id="rst1"></div>
+  
+  <img src="../images/coffee.jpg" alt="coffee">
+  <img src="../images/뱅쇼.jpg" alt="뱅쇼">
+  <img src="../images/식품1.jpg" alt="식품1">
+  <img src="../images/카푸치노.jpg" alt="카푸치노">
+  
+
+</body>
+</html>

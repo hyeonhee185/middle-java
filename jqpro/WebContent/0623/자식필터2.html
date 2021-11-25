@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+td{
+	width : 60px;
+	height : 30px;
+	padding : 5px;
+	text-align : center;
+}
+</style>
+<script>
+$(function(){
+	//배경색 넣기 방법 1 (first-child, last-child, nth-child(n))
+	/* $('td:first-child').css('background','#bbdefb');
+	$('td:nth-child(2)').css('background','#d1c4e9');
+	$('td:nth-child(3)').css('background','#f48fb1');
+	$('td:nth-child(4)').css('background','#d1c4e9');
+	$('td:nth-child(5)').css('background','#bbdefb');
+	$('td:nth-child(6)').css('background','#f0f4c3');
+	$('td:nth-child(7)').css('background','#d1c4e9');
+	$('td:last-child').css('background','#f0f4c3'); */
+	
+	//배경색 넣기 방법 2 (nth-child(n+1)) 배수+시작자릿수
+	$('td:nth-child(2n)').css('background','#d1c4e9');
+	$('td:nth-child(2n+1)').css('background','#f48fb1');
+
+	$('td:nth-child(odd)').css('background','#d1c4e9');
+	$('td:nth-child(even)').css('background','#f48fb1');
+	
+	//첫번째 행 배경색 바꾸기 1
+	$('tr td').slice(0,8).css('background','#f0f4c3');
+	$('tr td').slice(2,6).css('background','#bbdefb');
+	
+	//첫번째 행 배경색 바꾸기 2
+	$('tr:first-child td').css('background','#f0f4c3').css('color','#d1c4e9')
+	
+});
+
+</script>
+</head>
+<body>
+  <table border="1">
+  
+    <tr>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+      <td>ONE</td>
+    </tr>
+    
+    <tr>
+      <td>TWO</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td>THREE</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+    <tr>
+      <td>FOUR</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  
+  </table>
+</body>
+</html>

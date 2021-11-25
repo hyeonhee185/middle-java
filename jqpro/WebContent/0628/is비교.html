@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('p').on('click', function(){
+		
+		if( $(this).parent().is('.dd') ){
+			
+			//해당 영역을 복사해서 붙여넣기
+			$(this).clone(true).appendTo($(this).parent()).css('color', 'red');
+		}else{
+			alert("작업 대상이 아닙니다");
+		}
+	})
+	
+})
+</script>
+</head>
+<body>
+
+  <div id="rst">
+    
+    <div class="dd">
+      <p>무궁화 꽃이 피었습니다</p>
+    </div>
+    
+    <p>무궁화 삼천리 화려강산</p>
+    
+    <div class="dd">
+      <p>무궁화 꽃말은 섬세한 아름다움, 일편단심</p>
+    </div>
+    
+  </div>
+
+</body>
+</html>

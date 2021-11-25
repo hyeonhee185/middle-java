@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#link').on('click', function(){
+		
+		//나이를 입력받아서 15세미만일 때는 이동금지 alert 띄우기
+		age = parseInt(prompt("나이를 입력하세요"));
+		
+		//나이 비교
+		if(age <= 15){
+// 			event.preventDefault();
+			alert("페이지에 이동할 수 없습니다");
+			return false;	//기능을대체할 수 있지만, 하위 내용 수행하지 않음
+		}
+	})
+	
+	$('#box1 div').on('click',function(){
+		$(this).append("hello");
+	})
+	
+	$('#box1 span').on('click',function(){
+		$(this).css('border', '2px dashed red');
+		event.stopPropagation();
+	})
+	
+	$('#box1 button').on('click',function(){
+		$(this).css('background','teal');
+		event.stopPropagation();
+	})
+	
+	
+})
+</script>
+<style>
+#box1 div{
+	width : 500px;
+	height : 300px;
+	background : pink;
+	padding : 50px;
+}
+#box1 span{
+	width : 400px;
+	height : 250px;
+	background : orange;
+	display: inline-block;
+}
+#box1 button{
+	margin : 40px;
+}
+</style>
+</head>
+<body>
+
+  <h3>event.preventDefault : 기본 이벤트 실행 금지</h3>
+  <p><a id="link" href="http://www.w3schools.com">W3school</a>로 이동</p>
+ 
+ 
+  <h3>event.stopPropagation : 이벤트 버블링 금지</h3>
+  <div class="box" id="box1">
+   
+   <div>
+   	 <span>
+   	 	<button>클릭하세요</button>
+   	 </span>
+   </div>
+   
+ </div>
+
+
+</body>
+</html>

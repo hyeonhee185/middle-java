@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#btn').on('click',function(){
+		
+		$.ajax({
+			url : 'member1.jsp',
+			type : 'get',	//method
+			success : function(res){
+				
+				code = "";
+				$.each(res, function(i){
+					code += (i+1) + "번째 데이터 정보 <br>";
+					code += "아이디 : " + res[i].mid + "<br>";
+					code += "이름 : " + res[i].mname + "<br>";
+					code += "전화번호 : " + res[i].mhp + "<br><br>";
+				})
+				$('#rst1').html(code);
+				
+				//테이블 형태로 출력
+				code = "<table border='1'>";
+				code += "<tr class='tr1'><td>아이디</td><td>이름</td><td class='td1'>전화번호</td></tr>";
+				$.each(res,function(i){
+					code += "<tr>";
+					code += "<td>" + res[i].mid + "</td>";
+					code += "<td>" + res[i].mname + "</td>";
+					code += "<td>" + res[i].mhp + "</td>";
+					code += "</tr>";
+				})
+				code += "</table>";
+				$('#rst2').html(code);
+			},
+			error : function(xhr){
+				alert("상태 : "+ xhr.status);
+			},
+			dataType : 'json'
+		})
+		
+		
+	})
+	
+})
+</script>
+<style>
+td{
+	width : 80px;
+	height : 40px;
+	text-align : center;
+	padding : 5px;
+}
+.tr1{
+	background : yellow;
+}
+.td1{
+	width : 200px;
+}
+</style>
+</head>
+<body>
+  
+  <input type="button" id="btn" value="확인">
+  <br>
+  
+  <div id="rst1"></div>
+  <div id="rst2"></div>
+  
+</body>
+</html>

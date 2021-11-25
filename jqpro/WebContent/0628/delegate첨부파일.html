@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	count = 0;
+	
+	$('#add').on('click', function(){
+		
+		count++;
+		
+		file = "<p id='" + count + "'>";
+		file += "파일 : <input type='file'>";
+		file += "<button class='del'>삭제</button>";
+		file += "</p>";
+		
+		$(file).appendTo('#rst');
+	})
+	
+	//삭제 이벤트 - delegate방식
+	$('#rst').on('click', '.del', function(){
+		
+		$(this).parent().remove();
+	})
+	
+	
+	
+	
+})
+
+</script>
+</head>
+<body>
+
+  <div id="rst">
+    이름 <input type="text" id="name"> <br>
+    파일 <input type="file">
+      <button type="button" id="add">추가</button>
+  </div>
+
+</body>
+</html>

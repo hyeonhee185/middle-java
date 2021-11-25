@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('p').on('click',function(){
+		$(this).css('font-size','+=5px');
+	})
+	
+	$('#clone').on('click',function(){
+		p1 = $('#p1').clone();
+		$('#rst').append(p1);
+	})
+	
+	$('#clone_true').on('click',function(){
+		$('#p2').clone(true).appendTo($('#rst'));
+	})
+	
+})
+</script>
+</head>
+<body>
+  <h3>
+  	clone() : 대상 요소를 복사 (Ctrl+c) <br>
+  	clone(true) : 대상 요소의 이벤트를 같이 복사 (Ctrl+c) <br>
+	실제 화면에 복사가 이루어지려면 Ctrl+v 해줘야 한다(append, prepend, after, before)  	
+  </h3>
+
+  <p id="p1">무궁화 꽃이 피었습니다 - clone()</p>
+  <p id="p2">산들 바람이 불어옵니다 - clone(true)</p>
+  
+  <input type="button" id="clone" value="clone">
+  <input type="button" id="clone_true" value="clone(true)">
+  
+  <div id="rst"></div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$(':button').on('click',function(){
+		
+		$.ajax({
+			url : 'member2.jsp',
+			method : 'get',
+			success : function(){
+				
+			},
+			error : function(xhr){
+				alert(xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+})
+</script>
+</head>
+<body>
+
+  <input type="button" value="확인">
+  <br>
+  <div id="rst"></div>
+
+</body>
+</html>

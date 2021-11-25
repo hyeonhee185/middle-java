@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('button').on('click', function(){
+		
+		res = "";
+		
+		var obj = {
+			    이름: "홍길동",
+			    나이 : 25,
+			    성별 : "여",
+			    주소 : "서울특별시 양천구 목동",
+			    특기 : ["농구", "도술"],
+			    가족관계 : {아버지 : "홍판서", 어머니 : "춘섬"},
+			    회사 : "경기 수원시 팔달구 우만동"
+			 };
+		
+		//객체를 문자열로 변환( stringify() - 서버로 전송가능 )
+		var jsonStr = JSON.stringify(obj);
+		
+// 		console.log(jsonStr);
+		res += "1차 변환(obj > str) : " + jsonStr + "<br><br>";
+		
+		//문자열을 객체로 변환( parse() )
+		var jsonObj = JSON.parse(jsonStr);
+		console.log(jsonObj);
+		res += "2차 변환(str > obj) : " + jsonObj + "<br><br>";
+		
+		//key값으로 value값 가져오기
+		res += "이름 : " + jsonObj.이름 + "<br>";
+		res += "나이 : " + jsonObj.나이 + "<br>";
+		res += "성별 : " + jsonObj.성별 + "<br>";
+		res += "주소 : " + jsonObj.주소 + "<br>";
+		res += "특기 : " + jsonObj.특기 + "<br>";
+		res += "가족관계 : " + jsonObj.가족관계.어머니 + " , " + jsonObj.가족관계.아버지 + "<br>";
+		
+		$('#rst').html(res);
+		
+	})
+
+
+
+})
+</script>
+</head>
+<body>
+<pre>
+JSON.stringify(), JSON.parse() 
+자바스크립트 객체를 JSON화
+
+JSON
+: 자바스크립트의 리터럴 표현식을 활용해 간단한 포맷으로 데이터를 구분할 수 있는 문자열 포맷
+: 구조화된 데이터를 표현하기 위한 문자 기반 표준 포맷(key:value)
+: 경량(Light weight) Data 교환 형식
+
+
+</pre>
+
+  <button>JSON 변환 테스트</button>
+  <div id="rst"></div>
+  
+</body>
+</html>

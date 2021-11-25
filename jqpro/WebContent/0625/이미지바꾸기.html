@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+img{
+	width : 100px;
+	height : 100px;
+}
+#show{
+	display: none;
+}
+</style>
+<script>
+$(function(){
+	
+	/* $('img').on('mouseover',function(){
+		//src 값 가져옴
+		s = $(this).attr('src');
+		//src2 값 가져옴
+		s2 = $(this).attr('src2');
+		//src에 src2값을 적용
+		$(this).attr('src',s2);
+	})
+	
+	$('img').on('mouseout',function(){
+		//src에 처음 src값을 적용
+		$(this).attr('src',s);
+	}) */
+	
+	$('img').hover(function(){
+		s = $(this).attr('src');
+		s2 = $(this).attr('src2');
+		$(this).attr('src',s2);
+	}, function(){
+		$(this).attr('src',s);
+	})
+	
+	$('img').on('dblclick',function(){
+		$(this).hide();
+		
+		//보이는 이미지가 없을 때
+		if( $('img:visible').length < 1 ){
+			$('#show').show();
+		}
+	})
+	
+	$('#show').on('click',function(){
+		$('img').show();
+		$(this).hide();
+	})
+	
+	
+	
+})
+</script>
+</head>
+<body>
+
+  <input type="button" id="show" value="보이기">
+  
+  <br>
+  
+  <div id="rst1">
+    <img src="../images/가구1.jpg" alt="" src2="../images/가구2.jpg">
+    <img src="../images/국화.jpg" alt="" src2="../images/수국.jpg">
+    <img src="../images/단풍.jpg" alt="" src2="../images/대나무숲.jpg">
+    <img src="../images/딸기스무디.jpg" alt="" src2="../images/카페라떼.jpg">
+  </div>
+  
+  
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+td{
+	width : 40px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('li:first, li:last').css('background', 'yellow');
+	$('li:eq(5)').css('background', 'orange');
+	$('li:lt(4)').css('font-size','2.0em').css('font-weight','bold');
+	$('.box li:even').css('background','lightgreen'); //짝수 index 0부터
+	$('.box li:odd').css('color','green');	//홀수 index 0부터 
+	
+	$('tr:even').css('background','lightgreen');
+	$('tr:odd').css('color','green');
+	$('tr:first').css('background', 'black').css('color','white');
+	
+});
+</script>
+</head>
+<body>
+  <div class="box" id="box1">
+    <ul>
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+      <li>four</li>
+      <li>five</li>
+      <li>six</li>
+      <li>seven</li>
+      <li>eight</li>
+      <li>nine</li>
+      <li>ten</li>
+    </ul>
+  </div>
+  
+  <table border="1">
+    <tr>
+      <td>one</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>two</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>three</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>four</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>five</td>
+      <td></td>
+    </tr>
+  </table>
+  
+
+</body>
+</html>

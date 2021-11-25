@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+p{
+	border : 1px dotted red;
+	width : 100%;
+	height : auto;
+}
+</style>
+<script>
+$(function(){
+	
+	$('p').on('click',function(){
+		
+		str = $(this).text();
+		str2 = $(this).attr('title');
+		
+		img = "<img src='../images/" + str + ".jpg' alt='" 
+		+ str2 + "' width=50 height=50>";
+		
+		//선택요소 내부에 추가된다
+// 		$(this).prepend(img);
+// 		$(img).appendTo(this);
+		
+		//선택요소 외부에 추가된다
+// 		$(this).after(img);
+// 		$(img).insertAfter(this);
+		$(img).insertBefore(this);
+		
+		
+		
+	})
+	
+})
+</script>
+</head>
+<body>
+  <p title="flower">꽃</p>
+  <p title="국화">국화</p>
+  <p title="Koala">코알라</p>
+  <p title="Hydrangeas">수국</p>
+</body>
+</html>

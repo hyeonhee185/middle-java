@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+
+	$('input[value=html]').on('click',function(){
+		
+		res = "";
+		//p태그 첫번째 태그만 출력
+		a = $('p').html();
+		// 		alert(a);
+		
+		//p태그 전체 출력
+		
+		//selector를 이용한 each
+		$('p').each(function(i,v){
+		//object를 이용한 each
+// 		$.each($('p'), function(i,v){
+			res += $(this).html();
+		});
+		alert(res);
+	});
+	
+	$('input[value=text]').on('click',function(){
+		
+		res = $('p').text();
+		alert(res);
+	});
+	
+});
+</script>
+</head>
+<body>
+
+  <p>1<span>홍길동</span></p>
+  <p>2<span>개나리</span></p>
+  <p>3<span>진달래</span></p>
+  
+  <input type="button" value="html">
+  <input type="button" value="text">
+
+</body>
+</html>

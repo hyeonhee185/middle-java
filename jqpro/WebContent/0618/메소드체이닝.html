@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	//전체선택자 : $('*')
+	$('*').css('background', 'yellow');
+	
+	//요소선택자 : $('태그명') - h1요소의 글자색(color)을 파란색으로, 배경은 하늘색 변경
+	$('h1').css('background','lightblue').css('color','blue');
+	
+	//id선택자 : $('#id명') - id=para 요소의 글자색을 녹색, 배경은 오렌지 변경
+	$('#para').css('background','orange').css('color','green');
+	
+	//class선택자 : $('.id명') - class=sample 요소의 글자색을 빨강, 배경은 보라 변경
+	$('.sample').css('background','purple').css('color','red');
+	
+	
+	
+});
+</script>
+</head>
+<body>
+
+  <h1>제목입니다</h1>
+  <h2 id="para">작은 제목입니다</h2>
+  <h2 class="sample">샘플입니다</h2>
+  
+</body>
+</html>

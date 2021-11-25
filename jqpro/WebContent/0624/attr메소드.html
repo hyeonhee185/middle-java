@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+img{
+	width : 100px;
+	height :100px;
+}
+</style>
+<script>
+$(function(){
+	
+	
+	//추출한 src속성 값을 title에 설정하기
+	$('img').attr('title',function(){
+		
+		//이미지 src 값을 가져오기
+// 		$('img').attr('src');	//첫번째 항목에 대한 값만 불러온다
+// 		console.log($(this).attr('src'));//함수 안에서 내부적으로 for문을 도는 this를 활용해 src값을 불러온다	
+		vsrc = $(this).attr('src');
+		//속성값에서 이미지 이름만 추출한다
+		str = vsrc.lastIndexOf("/")+1;
+		end = vsrc.lastIndexOf(".");
+		vtt = vsrc.substring(str, end);
+		//추출한 값을 return하여 title속성의 값으로 설정한다
+		return vtt;
+	})
+	
+	$('button').on('click',function(){
+		$('img[alt="산"]').removeAttr('src');
+	})
+})
+</script>
+</head>
+<body>
+
+  <img src="../images/국화.jpg" alt="국화">
+  <img src="../images/단풍.jpg" alt="단풍">
+  <img src="../images/등대.jpg" alt="등대">
+  <img src="../images/딸기스무디.jpg" alt="딸기스무디">
+  <img src="../images/산.png" alt="산">
+  
+  <button>removeAttr</button>
+
+</body>
+</html>

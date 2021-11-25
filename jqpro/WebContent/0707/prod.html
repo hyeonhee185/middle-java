@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 부트스트랩은 반응형을 지원하기 때문에 뷰포트를 추가함 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+<script src="../js/jquery-3.5.1.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script>
+$(function(){
+	
+	$.ajax({
+		url : '../0706/lprod_ibatis.jsp',
+// 		type : 'get'	//생략가능, default : get
+		success : function(res){
+			code = "";
+			$.each(res, function(i){
+				code += `<option value=${res[i].gu}>${res[i].nm}</option>`;
+			})
+			$('#lprod').html(code);
+			$('#lprod').trigger('change');//이벤트 강제 발생시킴
+			
+		},
+		error : function(xhr){
+			alert(xhr.status);
+		},
+		dataType : 'json'
+	})
+	
+	$('#lprod').on('change', function(){
+		
+// 		console.log( $(this).val() );
+		
+		$.ajax({
+			url : '/jqpro/Prod.do',	// '/프로젝트명/서블릿url패턴' ,Servlet - Service - DAO(sql조회)
+			type : 'get',
+			data : { 'gu' : $(this).val() },
+			success : function(res){
+				code = "";
+				if(res.sw == "ok"){
+					$.each(res.data, function(i,v){
+						code += `<option value=${res.data[i].id}>${v.nm}</option>`;
+					})
+				}else{
+					code += `<option value='0'>데이터 없음</option>`;
+				}
+				$('#prod').html(code);
+				$('#prod').trigger('change');
+			},
+			error : function(xhr){
+				alert(xhr.status);
+			},
+			dataType : 'json'
+		})
+		
+	})
+	
+	$('#prod').on('change', function(){
+		
+		$.ajax({
+			url : 'jqpro/Prod.do',
+			type : 'post',
+			data : { 'id' : $(this).val() },
+			success : function(){},
+			error : function(xhr){
+				alert(xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+})
+</script>
+</head>
+<body>
+  <div id="box1">
+	<div class="container">
+	  <h4>LPROD</h4>
+	  <form>
+	    <div class="form-group">
+	      
+	      <label for="lprod">Select list</label>
+	      <select class="form-control" id="lprod">
+	      </select>
+
+	      <br>
+
+	      <label for="prod">select list</label>
+	      <select class="form-control" id="prod">
+	      </select>
+	      
+	    </div>
+ 	  </form>
+  	</div>
+  	
+  	<div id="detail"></div>
+  	
+  </div>
+</body>
+</html>

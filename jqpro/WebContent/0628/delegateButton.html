@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	cnt = 0;
+	
+// 	$('div').delegate('.btn', 'click', function(){});
+	$(document).on('click', '.btn', function(){ //부모 요소 대신 document로 대체 가능
+		cnt++ // cnt+1
+		
+		//같은 형식의 새로운 버튼을 생성
+		$("<input>",{
+			'type' : 'button',
+			'class' : 'btn',
+			'value' : '새로운버튼'+ cnt
+		}).appendTo('#rst');
+	})
+	
+	$('#clear').on('click', function(){
+		$(document).off('click');
+// 		$('div').off('click');
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+<pre>
+이벤트 등록 형식 : delegate
+
+이미 생성된 버튼과 실행 후 동적으로 새롭게 생성되는 버튼에 같은 이벤트 처리기(핸들러)를 등록
+
+</pre>
+
+  <div>
+    <input type="button" class="btn" value="버튼1">
+    <input type="button" class="btn" value="버튼2">
+  </div>
+  
+  <input type="button" id="clear" value="해제">
+  
+  <br>
+  <div id="rst"></div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	$('#btn1').on('click', function(){
+		$.ajax({
+			url : 'lprod_ibatis.jsp',
+			type : 'get',
+			success : function(res){
+				code = "<table border='1'>";
+				code += "<tr class='tr1'><td>LPROD_ID</td><td>LPROD_GU</td><td class='td1'>LPROD_NM</td></tr>";
+				$.each(res,function(i,v){
+					code += "<tr>";
+					code += "<td>" + res[i].id + "</td>";
+					code += "<td>" + res[i].gu + "</td>";
+					code += "<td>" + res[i].nm + "</td>";
+					code += "</tr>";
+				})
+				code += "</table>";
+				$('#rst1').html(code);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status);
+			},
+			dataType : 'json'
+		})
+	})
+	
+})
+</script>
+<style>
+td{
+	width : 80px;
+	height : 40px;
+	text-align : center;
+	padding : 5px;
+}
+.tr1{
+	background : yellow;
+}
+.td1{
+	width : 200px;
+}
+</style>
+</head>
+<body>
+  
+  <input type="button" id="btn1" value="확인">
+  <br>
+  <div id="rst1"></div>
+  
+</body>
+</html>

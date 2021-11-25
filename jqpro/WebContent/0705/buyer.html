@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+/* 	$.ajax({
+		url : '',
+		type : '',	//또는 method : '',
+		data : '',
+		success : function(){},
+		error : function(){},
+		dataType : ''
+	}) */
+	
+	//Ajax단축메뉴 - $.get(url,data,success,dataType);
+	$.get(
+		'buyerNames.jsp',	//url
+		function(res){		//success
+			//res 응답데이터 - jsonObjectArray
+			$.each(res, function(){	//사용하지 않으면 i,v생략 가능
+				ptag = $("<p></p>", {
+					'id'	: this.id,	//res[i].id, v.id
+					'text'	: this.name
+				})	// => <p id="P10101">삼성컴퓨터</p>
+				
+				//(부모요소).appned(자식요소)
+				//(자식요소).appendTo(부모요소)
+				$('#names').append(ptag);
+			})
+		},		
+		'json'
+	)
+	
+	//동적으로 생성된 요소의 이벤트 적용 - delegate방식 (부모요소, 또는 document).on(이벤트, 선택요소, 함수)
+	$('#names').on('click', 'p', function(){
+		
+		//$.post(url, data, success, dataType)
+		$('#details').empty();	//empty()는 selector의 후손요소만 지움(비움)
+		
+		$.post(
+			'buyerDetail.jsp',
+			{ 'idid' : $(this).attr("id") },
+			function(res){
+				
+				code = "<table border='1'>";
+				code += "<tr>";
+				code += "<td>BUYER_ID</td>"
+				code += "<td>" + res.id + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BUYER_NAME</td>"
+				code += "<td>" + res.name + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BUYER_LGU</td>"
+				code += "<td>" + res.lgu + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BUYER_BANK</td>"
+				code += "<td>" + res.bank + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BANK_NO</td>"
+				code += "<td>" + res.bankno + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BANK_NAME</td>"
+				code += "<td>" + res.bankname + "</td>"
+				code += "</tr>";
+				
+				code += "<tr>";
+				code += "<td>BUYER_BANK</td>"
+				code += "<td>" + res.bank + "</td>"
+				code += "</tr></table>";
+				
+				$('#details').html(code);
+				
+			},	//success
+			'json'
+		)
+		
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+})
+</script>
+<style>
+th{
+	width : 200px;
+	height : 50px;
+}
+td{
+	height : auto;
+	text-align : center;
+}
+#details{
+	width : 400px;
+}
+p:hover{
+	background : yellow;
+}
+#details td{
+	width : 200px;
+	height : 50px;
+}
+</style>
+</head>
+<body>
+
+  <div id="box1">
+    <div id="rst">
+      <table border="1">
+        <tr>
+          <th>거래처 이름</th>
+          <th>거래처 상세정보</th>
+        </tr>
+        <tr>
+          <td id="names"></td>
+          <td id="details"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

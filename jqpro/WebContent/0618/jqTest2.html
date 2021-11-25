@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+div{
+	height : 200px;
+}
+</style>
+<script>
+
+
+
+
+	$(document).ready(function(){
+		$('#btn1').on('click', function(){
+			
+			//기존 script
+// 			document.getElementById('rst1').style.backgroundColor = 'yellow';
+			//jQuery
+			$('#rst1').css('background','pink');
+		});
+	});
+	
+</script>
+</head>
+<body>
+
+  <input type="button" value="확인" id="btn1">
+  
+  <br>
+  
+  <div id="rst1"></div>
+
+</body>
+</html>

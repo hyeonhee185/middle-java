@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('p').css('background','cyan');
+	
+	$('div').on('click',function(){
+		cr = parseInt(Math.random()*256);
+		cg = parseInt(Math.random()*256);
+		cb = parseInt(Math.random()*256);
+		
+// 		$('p',this).css('color', 'rgb(' + cr +',' + cg + ',' + cb + ')');
+		$('p',this).css('color', `rgb(${cr},${cg},${cb})`);
+	});
+	
+	$('#btn1').on('click',function(){
+		plist = document.getElementsByTagName('p');	//$('p')
+		plist[0].style.backgroundColor = 'yellow';
+		//plist[1]은 DOM객체로 jQuery메소드를 사용할 수 없다.
+		//$()안에 DOM객체를 넣어 jQuery객체로 변환시켜 사용가능하다
+		$(plist[1]).css('background', 'red');
+	});
+	
+});
+
+</script>
+</head>
+<body>
+
+  <h3>context : 선택자를 검색할 범위를 설정한다(생략시 전체문서에서 검색)</h3>
+
+  <input type="button" id="btn1" value="확인">
+  
+  <p>함박눈이 펑펑 왔어요</p>
+  <p>무궁화 꽃이 피었습니다</p>
+  
+  <div id="result1">
+    <p>result1번 속에 있는 p태그입니다</p>
+  </div>
+
+  <div>
+    <p>나리나리 개나리 입에 따다 물고요</p>
+  </div>
+
+
+</body>
+</html>

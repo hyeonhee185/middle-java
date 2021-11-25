@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+img{
+	width : 100px;
+	height : 100px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#append').on('click',function(){
+		
+		//대상요소(rst1)의 첫번째 img를 제거하고 대상요소의 내부 맨 뒤로 추가
+		$('#rst1').append($('#rst1 img').first());
+		
+	})
+	
+	$('#prepend').on('click',function(){
+		
+		//가장 마지막 요소(img)가 대상요소(rst2)의 내부 맨앞으로 이동
+		$('#rst2 img').last().prependTo('#rst2');
+	})
+	
+	
+	
+	
+})
+</script>
+</head>
+<body>
+  <input type="button" id="append" value="append">
+  <br>
+  <div id="rst1">
+    <img src="../images/doch.jpg" alt="doch.jpg">
+    <img src="../images/Koala.jpg" alt="Koala.jpg">
+    <img src="../images/펭귄.jpg" alt="펭귄.jpg">
+    <img src="../images/puppies.jpg" alt="puppies.jpg">
+    <img src="../images/사자.jpg" alt="사자.jpg">
+  </div>
+  
+  <input type="button" id="prepend" value="prepend">
+  <br>
+  <div id="rst2">
+    <img src="../images/doch.jpg" alt="doch.jpg">
+    <img src="../images/Koala.jpg" alt="Koala.jpg">
+    <img src="../images/펭귄.jpg" alt="펭귄.jpg">
+    <img src="../images/puppies.jpg" alt="puppies.jpg">
+    <img src="../images/사자.jpg" alt="사자.jpg">
+  </div>
+
+
+</body>
+</html>

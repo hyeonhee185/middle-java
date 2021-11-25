@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+img{
+	width : 200px;
+	height : 200px;
+	position : relative; /* html요소는 기본적으로 정적인 위치 값을 갖기때문에
+							위치를 조작하기 위해서는 해당 요소에 위치속성 값을 지정해야 함*/ 		
+}
+</style>
+<script>
+$(function(){
+	
+	$('#btn1').on('click',function(){
+		$('img').animate({left : '+=20px'},100);
+	})
+	$('#btn2').on('click',function(){
+		$('img').animate({left : '-=20px'},100);
+	})
+	
+	$('#btn3').on('click', function(){
+		$('#p1').css('font-size', '+=4px');
+		$('#p2').animate({'font-size' : '+=4px'}, 100);
+	})
+	
+	
+})
+</script>
+</head>
+<body>
+
+  <input type="button" id="btn1" value=">>>>>">
+  <input type="button" id="btn2" value="<<<<<">
+  <br>
+  <div id="rst">
+  	<img src="../images/coffee.jpg">
+  </div>
+  
+  <input type="button" id="btn3" value="확인">
+  <p id="p1">무궁화 꽃이 피었습니다 -css</p>
+  <p id="p2">펄펄 눈이 옵니다 -animate</p>
+  
+  
+
+</body>
+</html>

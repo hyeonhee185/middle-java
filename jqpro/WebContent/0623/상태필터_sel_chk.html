@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	$('#rst1 select').on('change', function(){
+		
+		op = "";
+		
+		$('option:selected').each(function(){
+			op += $(this).val() + " ";
+		})
+		$('#rst1 div').html(op);
+	})
+	
+// 	$('input[value="전송"]')
+	$('input:button').on('click',function(){
+		
+		chk = "";
+		
+		$(':checkbox:checked').each(function(i,v){
+			chk += $(this).val() + " ";
+		})
+// 		$('#rst2 div').html(chk);
+		
+		$('form').attr('action','test.jsp?chk=' + chk).attr('method','get');
+		$('form').submit();
+	})
+
+	
+	
+})
+</script>
+</head>
+<body>
+
+  <div id="rst1">
+    <form>
+      <select multiple size="7">
+        <option>개나리</option>
+        <option>진달래</option>
+        <option selected>민들레</option>
+        <option>무궁화</option>
+        <option>철쭉</option>
+        <option selected>목련</option>
+        <option>왕벚꽃</option>
+      </select>
+    </form>
+    <div></div>
+  </div>
+  
+  <hr>
+  
+  <div id="rst2">
+    <form>
+	  <input type="checkbox" name="hobby" value="여행">여행    
+	  <input type="checkbox" name="hobby" value="장기">장기    
+	  <input type="checkbox" name="hobby" value="바둑">바둑    
+	  <input type="checkbox" name="hobby" value="독서">독서    
+	  <input type="checkbox" name="hobby" value="낚시">낚시
+	  
+	  <input type="button" value="전송">    
+    </form>
+    <div></div>
+  </div>
+  
+  
+  
+
+</body>
+</html>

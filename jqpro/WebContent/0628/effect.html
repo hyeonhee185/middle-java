@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+img{
+	width : 300px;
+	height : 300px;
+}
+</style>
+<script>
+$(function(){
+	
+	$('#show').on('click',function(){
+		$('img').show(500);
+	})
+	$('#hide').on('click',function(){
+		$('img').hide(2000, function(){
+			alert('숨김');
+		});
+	})
+	$('#tog').on('click',function(){
+		$('img').toggle(100);
+	})
+	$('#sup').on('click',function(){
+		$('img').slideUp();
+	})
+	$('#sdown').on('click',function(){
+		$('img').slideDown();
+	})
+	$('#stog').on('click',function(){
+		$('img').slideToggle();
+	})
+	$('#fin').on('click',function(){
+		$('img').fadeIn();
+	})
+	$('#fout').on('click',function(){
+		$('img').fadeOut();
+	})
+	$('#ftog').on('click',function(){
+		$('img').fadeToggle("slow");
+	})
+})
+</script>
+</head>
+<body>
+
+  <input type="button" id="show" value="show">
+  <input type="button" id="hide" value="hide">
+  <input type="button" id="tog" value="toggle">
+  <input type="button" id="sup" value="slideUp">
+  <input type="button" id="sdown" value="slideDown">
+  <input type="button" id="stog" value="slideToggle">
+  <input type="button" id="fin" value="fadeIn">
+  <input type="button" id="fout" value="fadeOut">
+  <input type="button" id="ftog" value="fadeToggle">
+  
+  <br>
+  
+  <div id="rst">
+    <img src="../images/Koala.jpg" alt="코알라">
+  </div>
+
+</body>
+</html>

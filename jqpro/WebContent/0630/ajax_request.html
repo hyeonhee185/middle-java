@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+	
+	//request객체 생성
+	req = new XMLHttpRequest(); //생성자 표현식으로 객체 생성
+	
+	$('#box1 input:button').on('click',function(){
+		
+		//요청
+		req.open('get', 'jsonTest.jsp', true);
+		req.send();
+		
+		//응답
+		req.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200){ //4:서버처리 끝 200:결과성공
+				//JSON.parse하기 위해서 응답 데이터가 json형식이어야 한다
+				aa = JSON.parse(this.responseText); //json형태 배열
+			}
+			code = "<ul>";
+			$.each(aa, function(i,v){
+				code += "<li>" + aa[i] + "</li>";
+			})
+			code += "</ul>";
+			
+			$('#rst1').html(code);
+		}
+	})
+	
+	$('#box2 input:button').on('click',function(){
+		
+		//요청
+		req.open('get', 'jsonObjTest.jsp', true);
+		req.send();
+		
+		//응답
+		req.onreadystatechange = function(){
+			if(this.readyState == 4 && this.status == 200){
+				aa = JSON.parse(this.responseText);//json object
+				
+				code = `이름 : ${aa.name} <br>`;
+				code += `전화 : ${aa.tel} <br>`;
+				code += `주소 : ${aa.addr} <br>`;
+				code += `메일 : ${aa.email} <br>`;
+				
+				$('#rst2').html(code);
+			}
+		}
+	})
+	
+	$('#box3 input:button').on('click',function(){
+		
+		//요청
+		req.open('get', 'jsonObjArr.jsp', true);
+		req.send();
+		
+		//응답
+		req.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200){
+				aa = JSON.parse(this.responseText);	//json object Array
+				
+				code = "<table border='1'>";
+				code += "<tr><td>이름</td><td>전화</td><td>주소</td></tr>";
+				
+				$.each(aa, function(i,v){
+					code += "<tr>";
+					code += "<td>" + v.name + "</td>";
+					code += "<td>" + v.tel + "</td>";
+					code += "<td>" + aa[i].addr + "</td>";
+					code += "</tr>";
+				})
+				code += "</table>";
+				$('#rst3').html(code);
+			}
+		}
+	})
+	
+})
+</script>
+</head>
+<body>
+
+  <div id="box1">
+    <input type="button" value="배열형태">
+    <div id="rst1"></div>
+  </div>
+  
+  <div id="box2">
+    <input type="button" value="jsonObj">
+    <div id="rst2"></div>
+  </div>
+  
+  <div id="box3">
+    <input type="button" value="jsonObjArr">
+    <div id="rst3"></div>
+  </div>
+  
+  
+  
+
+</body>
+</html>

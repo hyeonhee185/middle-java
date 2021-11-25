@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+button{
+	display : none;
+}
+</style>
+<script>
+function proc1(t){
+// 	$(t).hide();
+	
+	//색상변경
+// 	t.style.color = 'blue';		//javascript코드
+	
+// 	t.css('color', 'red');		//t는 script객체이므로 jQuery에서 사용할 수 없다
+	$(t).css('color', 'red');	//t를 jQuery객체로 만들어준 후 사용가능하다
+}
+
+$(function(){	//$(document).ready(function(){});과 같은 기능, 간결하게 표현
+	
+	$('#jqd h2').on('click',function(){
+		$(this).hide();
+		
+		if($('#jqd h2:visible').length < 1){//div하위 h2요소가 모두 안보일 때
+			$('button').show();				//버튼을 보이게 함
+		}
+	});
+	
+// 	$('button') = $('#jqd button') //여러개의 버튼이 있을 경우, 해당 영역을 지정
+	$('#jqd button').on('click',function(){
+		$('#jqd h2').show();
+		$(this).hide();
+	});
+
+
+
+
+
+});
+
+</script>
+</head>
+<body>
+
+  <h2 onclick="proc1(this)">클릭하면 사라집니다1</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다2</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다3</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다4</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다5</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다6</h2>
+  <h2 onclick="proc1(this)">클릭하면 사라집니다7</h2>
+  
+  <br><br>
+  
+  <div id="jqd">
+    <h2>클릭하면 사라집니다1</h2>
+    <h2>클릭하면 사라집니다2</h2>
+    <h2>클릭하면 사라집니다3</h2>
+    <h2>클릭하면 사라집니다4</h2>
+    <h2>클릭하면 사라집니다5</h2>
+    <h2>클릭하면 사라집니다6</h2>
+    <h2>클릭하면 사라집니다7</h2>
+    
+    <button type="button">보이기</button>
+  </div>
+  
+
+</body>
+</html>

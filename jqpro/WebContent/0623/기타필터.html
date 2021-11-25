@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>
+$(function(){
+
+	$('button[value="hidden"]').on('click', function(){
+		
+		str = "<h2>p:hidden</h2>";
+		
+		$('p:hidden').each(function(){
+			str += $(this).html();
+		})
+		$('#hidden').html(str);
+	})
+	
+	$('button[value="visible"]').on('click', function(){
+		
+		str = "<h2>p:visible</h2>";
+		
+		$('p:visible').each(function(){
+			str += $(this).html() + "<br>";
+		})
+		$('#visible').html(str);
+	})
+	
+})
+</script>
+</head>
+<body>
+  <p>보이는 문단</p>
+  <p style="visibility:hidden;">숨겨진 문단</p>
+  <p style="display:none;">자리를 차지하지 못한 문단</p>
+  <p style="opacity:0;">투명한 문단</p>
+  <input type="hidden" value="내가보이니?">
+  <hr>
+  <button value="hidden">hidden요소</button>
+  <button value="visible">visible요소</button>
+  
+  <br>
+  
+  <div id="hidden"></div>
+  <div id="visible"></div>
+  
+</body>
+</html>
